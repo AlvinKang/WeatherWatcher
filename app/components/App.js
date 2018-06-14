@@ -1,6 +1,6 @@
 const React = require("react");
-const Home = require("./components/Home");
-const Nav = require("./components/Nav");
+const Home = require("./Home");
+const Nav = require("./Nav");
 
 class App extends React.Component {
   render() {
