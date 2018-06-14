@@ -3,7 +3,14 @@ const React = require("react");
 function Nav(props) {
   return (
     <div className="nav">
-      <h1 className="app-header">Weather App</h1>
+      <p className="app-header">
+        <i class="fas fa-sun" /> Weather Watcher
+      </p>
+
+      <form className="nav-search">
+        <input type="text" placeholder="Las Vegas, Nevada" />
+        <button className="button">Get Weather</button>
+      </form>
     </div>
   );
 }

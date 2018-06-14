@@ -14,20 +14,25 @@ div {
 }
 
 .app-header {
-  display: block;
-  font-size: 2em;
+  font-size: 3em;
   margin: 0;
   padding: 0;
-  padding-left: 10px;
-  font-weight: 250;
+  padding-left: 30px;
+  font-weight: 800;
+  color: ivory;
+}
+
+.app-header i {
+  color: #ffd900;
 }
 
 .nav {
   display: flex;
+  justify-content: space-between;
   align-items: center;
   grid-column: 1 / -1;
   grid-row: 1 / 2;
-  background: white;
+  background: #3c8ed2;
 }
 
 .column {
@@ -51,7 +56,7 @@ div {
   text-align: center;
   font-size: 3.5em;
   font-weight: 100;
-  color: white;
+  color: #4b3e3e;
   margin-bottom: 10px;
 }
 
@@ -72,7 +77,6 @@ div {
   border-radius: 5px;
   width: 200px;
   text-align: center;
-  display: block;
   padding: 7px 0;
   margin: 10px auto;
 }
@@ -86,4 +90,18 @@ div {
 
 .button:active {
   transform: translateY(1px);
+}
+
+.nav-search input {
+  border-radius: 3px;
+  margin: 10px 10px;
+  padding: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.43);
+  font-size: 1em;
+}
+
+.nav-search .button {
+  margin-right: 30px;
+  font-size: 1.2em;
+  width: 150px;
 }
