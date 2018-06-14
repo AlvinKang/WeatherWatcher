@@ -4,7 +4,8 @@ function Nav(props) {
   return (
     <div className="nav">
       <p className="app-header">
-        <i class="fas fa-sun" /> Weather Watcher
+        <i className="fas fa-sun" />
+        <span id="app-name"> Weather Watcher</span>
       </p>
 
       <form className="nav-search">

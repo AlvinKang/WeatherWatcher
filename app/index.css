@@ -105,3 +105,29 @@ div {
   font-size: 1.2em;
   width: 150px;
 }
+
+@media (max-width: 880px) {
+  .nav {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 768px) {
+  .nav-search {
+    display: none;
+  }
+
+  .nav {
+    justify-content: center;
+  }
+
+  .app-header {
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 500px) {
+  .home-container label {
+    font-size: 2.5em;
+  }
+}
