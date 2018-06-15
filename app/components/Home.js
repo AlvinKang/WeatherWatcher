@@ -1,4 +1,5 @@
 const React = require("react");
+const api = require("../utils/api");
 
 class Home extends React.Component {
   constructor(props) {
@@ -15,10 +16,17 @@ class Home extends React.Component {
     // Prevent default submit
     event.preventDefault();
     // TODO: Call API, route to next page
-    console.log(this.state.searchValue);
+    const results = {};
+    api.getCurrentWeather(this.state.searchValue).then(data => {
+      results.weather = data.weather;
+      results.location = data.name;
+      console.log(results);
+    });
+    // api.getForecast(this.state.searchValue).then(data => {
+    //   console.log(data);
+    // });
   }
 
-  //
   handleChange(event) {
     const searchValue = event.target.value;
     this.setState({

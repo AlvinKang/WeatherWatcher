@@ -1,4 +1,5 @@
 const React = require("react");
+const api = require("../utils/api");
 
 class Nav extends React.Component {
   constructor(props) {
@@ -21,7 +22,12 @@ class Nav extends React.Component {
   handleSubmit(event) {
     event.preventDefault();
     // TODO: Call API, route to next page
-    console.log(this.state.searchValue);
+    const results = {};
+    api.getCurrentWeather(this.state.searchValue).then(data => {
+      results.weather = data.weather;
+      results.location = data.name;
+      console.log(results);
+    });
   }
 
   render() {
