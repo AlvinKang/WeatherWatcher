@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/AlvinKang/react-fundamentals-curriculum#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "prop-types": "^15.6.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1"
