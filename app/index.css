@@ -6,6 +6,10 @@ div {
   padding: 0;
 }
 
+.link {
+  text-decoration: none;
+}
+
 .container {
   display: grid;
   grid-template-rows: 100px 1fr;

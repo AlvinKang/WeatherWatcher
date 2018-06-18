@@ -1,14 +1,22 @@
 const React = require("react");
 const Home = require("./Home");
 const Nav = require("./Nav");
+import Forecast from "./Forecast";
+import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
   render() {
     return (
-      <div className="container">
-        <Nav />
-        <Home />
-      </div>
+      <Router>
+        <div className="container">
+          <Nav />
+          <Switch>
+            <Route exact path="/" component={Home} />
+            <Route path="/forecast" component={Forecast} />
+            <Route render={() => <p>Not found</p>} />
+          </Switch>
+        </div>
+      </Router>
     );
   }
 }

@@ -1,5 +1,17 @@
 const React = require("react");
 const api = require("../utils/api");
+import { Link } from "react-router-dom";
+
+const NavHeader = () => {
+  return (
+    <Link to="/" className="link">
+      <p className="app-header">
+        <i className="fas fa-sun" />
+        <span id="app-name"> Weather Watcher</span>
+      </p>
+    </Link>
+  );
+};
 
 class Nav extends React.Component {
   constructor(props) {
@@ -33,11 +45,7 @@ class Nav extends React.Component {
   render() {
     return (
       <div className="nav">
-        <p className="app-header">
-          <i className="fas fa-sun" />
-          <span id="app-name"> Weather Watcher</span>
-        </p>
-
+        <NavHeader />
         <form className="nav-search" onSubmit={this.handleSubmit}>
           <input
             type="text"

@@ -1,5 +1,6 @@
 const React = require("react");
 const api = require("../utils/api");
+import { Link } from "react-router-dom";
 
 class Home extends React.Component {
   constructor(props) {
@@ -48,8 +49,18 @@ class Home extends React.Component {
             onChange={this.handleChange}
             value={this.state.searchValue}
           />
+
           <button className="button" type="submit">
-            Get Weather
+            <Link
+              to={{
+                pathname: "/forecast",
+                search: `?location=${this.state.searchValue}`
+              }}
+              style={{ display: "block", height: "100%", color: "white" }}
+              className="link"
+            >
+              Get Weather
+            </Link>
           </button>
         </form>
       </div>
