@@ -16,7 +16,7 @@ function getCurrentWeather(location) {
   return axios
     .get(url)
     .then(res => res.data)
-    .catch(err => console.log(err));
+    .catch(err => handleError);
 }
 
 // 5-day forecast
@@ -32,7 +32,12 @@ function getForecast(location) {
   return axios
     .get(url)
     .then(res => res.data)
-    .catch(err => console.log(err));
+    .catch(err => handleError);
+}
+
+function handleError(error) {
+  console.warn(error);
+  return null;
 }
 
 module.exports = {

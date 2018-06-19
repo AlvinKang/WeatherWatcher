@@ -56,6 +56,35 @@ div {
   background-image: url("./images/pattern.svg");
 }
 
+.forecast-container {
+  display: flex;
+  align-items: center;
+  /* justify-content: center; */
+  flex-direction: column;
+  grid-column: 1 / -1;
+  grid-row: 2 / -1;
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 300px;
+  height: 300px;
+  border: 1px solid #83a5b3;
+}
+
+.card img {
+  padding-top: 10px;
+  width: auto;
+  height: 50%;
+}
+
+.card p {
+  font-weight: 200;
+  font-size: 2em;
+}
+
 .column label {
   text-align: center;
   font-size: 3.5em;
