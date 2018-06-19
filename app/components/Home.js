@@ -1,31 +1,23 @@
 const React = require("react");
-const api = require("../utils/api");
-import { Link } from "react-router-dom";
+import { Redirect } from "react-router-dom";
 
 class Home extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: ""
+      searchValue: "",
+      fireRedirect: false
     };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  // Send API request and route to other page
+  // Redirect to forecast page
   handleSubmit(event) {
-    // Prevent default submit
     event.preventDefault();
-    // TODO: Call API, route to next page
-    const results = {};
-    api.getCurrentWeather(this.state.searchValue).then(data => {
-      results.weather = data.weather;
-      results.location = data.name;
-      console.log(results);
+    this.setState({
+      fireRedirect: true
     });
-    // api.getForecast(this.state.searchValue).then(data => {
-    //   console.log(data);
-    // });
   }
 
   handleChange(event) {
@@ -36,6 +28,8 @@ class Home extends React.Component {
   }
 
   render() {
+    const { fireRedirect } = this.state;
+
     return (
       <div className="home-container">
         <form className="column" onSubmit={this.handleSubmit}>
@@ -51,18 +45,17 @@ class Home extends React.Component {
           />
 
           <button className="button" type="submit">
-            <Link
-              to={{
-                pathname: "/forecast",
-                search: `?location=${this.state.searchValue}`
-              }}
-              style={{ display: "block", height: "100%", color: "white" }}
-              className="link"
-            >
-              Get Weather
-            </Link>
+            Get Weather
           </button>
         </form>
+        {fireRedirect && (
+          <Redirect
+            to={{
+              pathname: "/forecast",
+              search: `?location=${this.state.searchValue}`
+            }}
+          />
+        )}
       </div>
     );
   }
