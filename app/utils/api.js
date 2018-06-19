@@ -29,15 +29,7 @@ function getForecast(location) {
 
   console.log(url);
 
-  return axios
-    .get(url)
-    .then(res => res.data)
-    .catch(err => handleError);
-}
-
-function handleError(error) {
-  console.warn(error);
-  return null;
+  return axios.get(url);
 }
 
 module.exports = {

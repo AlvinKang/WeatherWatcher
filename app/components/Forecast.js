@@ -145,7 +145,11 @@ class Forecast extends React.Component {
     this.state = {
       loading: true,
       location: "",
-      forecast: []
+      forecast: [],
+      error: {
+        isError: false,
+        errMsg: ""
+      }
     };
   }
 
@@ -155,20 +159,54 @@ class Forecast extends React.Component {
     const location = queryString.parse(search).location;
 
     // Call api
-    api.getForecast(location).then(res => {
-      if (res) {
-        // If api call is successful
-        // Push forecast objects into state array
-        this.setState({
-          location: res.city.name,
-          forecast: combineInfoByDay(organizeByDay(res.list)),
-          loading: false
-        });
-      } else {
-        // If api call fails (null)
-        console.log("API FAILED");
-      }
-    });
+    api
+      .getForecast(location)
+      .then(res => res.data)
+      .then(res => {
+        if (res) {
+          // If api call is successful
+          // Push forecast objects into state array
+          this.setState({
+            location: res.city.name,
+            forecast: combineInfoByDay(organizeByDay(res.list)),
+            loading: false
+          });
+        } else {
+          // If api call fails (null)
+          console.log("API FAILED");
+        }
+      })
+      .catch(error => {
+        if (error.response) {
+          // The request was made and the server responded with a status code
+          // that falls out of the range of 2xx
+          console.log(error.response.data);
+          console.log(error.response.status);
+          console.log(error.response.headers);
+          this.setState({
+            error: {
+              isError: true,
+              errMsg: "Error: " + error.response.data.message
+            },
+            loading: false
+          });
+        } else if (error.request) {
+          // The request was made but no response was received
+          // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+          // http.ClientRequest in node.js
+          console.log(error.request);
+        } else {
+          // Something happened in setting up the request that triggered an Error
+          console.log("Error", error.message);
+          this.setState({
+            error: {
+              isError: true,
+              errMsg: "There was an error. Please try again."
+            },
+            loading: false
+          });
+        }
+      });
   }
 
   handleSubmit(event) {
@@ -190,6 +228,8 @@ class Forecast extends React.Component {
       <div className="forecast-container">
         {this.state.loading ? (
           <h1>Loading</h1>
+        ) : this.state.error.isError ? (
+          <h1>{this.state.error.errMsg}</h1>
         ) : (
           <div style={{ textAlign: "center" }}>
             <h1>{this.state.location}</h1>

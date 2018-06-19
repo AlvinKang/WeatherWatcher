@@ -6,8 +6,9 @@ const DayCard = props => {
   return (
     <div className="card">
       <img src={props.img} alt="weather img" />
-      <Moment format="dddd, MMM DD">{props.date}</Moment>
       <p>
+        <Moment format="dddd, MMM DD">{props.date}</Moment>
+        <br />
         {props.lo} / {props.hi}
       </p>
     </div>
