@@ -163,20 +163,22 @@ class Forecast extends React.Component {
       .getForecast(location)
       .then(res => res.data)
       .then(res => {
-        if (res) {
-          // If api call is successful
-          // Push forecast objects into state array
-          this.setState({
-            location: res.city.name,
-            forecast: combineInfoByDay(organizeByDay(res.list)),
-            loading: false
-          });
-        } else {
-          // If api call fails (null)
-          console.log("API FAILED");
-        }
+        // If api call is successful
+        // Push forecast objects into state array
+        this.setState({
+          location: res.city.name,
+          forecast: combineInfoByDay(organizeByDay(res.list)),
+          loading: false
+        });
       })
       .catch(error => {
+        // Handle error
+        this.setState({
+          error: {
+            isError: true
+          },
+          loading: false
+        });
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -185,25 +187,26 @@ class Forecast extends React.Component {
           console.log(error.response.headers);
           this.setState({
             error: {
-              isError: true,
               errMsg: "Error: " + error.response.data.message
-            },
-            loading: false
+            }
           });
         } else if (error.request) {
           // The request was made but no response was received
           // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
           // http.ClientRequest in node.js
           console.log(error.request);
+          this.setState({
+            error: {
+              errMsg: "Error: No response received."
+            }
+          });
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
           this.setState({
             error: {
-              isError: true,
               errMsg: "There was an error. Please try again."
-            },
-            loading: false
+            }
           });
         }
       });
