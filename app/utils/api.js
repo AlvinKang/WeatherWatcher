@@ -9,7 +9,7 @@ const params = `units=imperial&APPID=${APP_ID}`;
 // http://api.openweathermap.org/data/2.5/weather?q=Las%20Vegas,us&APPID=37f0769077b6b602e8fca3331960152e
 export const getCurrentWeather = location => {
   const url = window.encodeURI(
-    `http://api.openweathermap.org/data/2.5/weather?q=${location}&${params}`
+    `https://api.openweathermap.org/data/2.5/weather?q=${location}&${params}`
   );
 
   return get(url)
@@ -39,7 +39,7 @@ export const getCurrentWeather = location => {
 // api.openweathermap.org/data/2.5/forecast?q=las%20vegas&APPID=37f0769077b6b602e8fca3331960152e
 export const getForecast = location => {
   const url = window.encodeURI(
-    `http://api.openweathermap.org/data/2.5/forecast?q=${location}&${params}`
+    `https://api.openweathermap.org/data/2.5/forecast?q=${location}&${params}`
   );
 
   return get(url);

@@ -4,7 +4,10 @@
   "description": "A web app made in React that retrieves weather forecast information for a given location using Open Weather API",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --open"
+    "start": "webpack-dev-server --open",
+    "build": "NODE_ENV='production' webpack -p",
+    "deploy": "npm run build && firebase deploy",
+    "firebase-init": "firebase login && firebase init"
   },
   "babel": {
     "presets": [
@@ -14,14 +17,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AlvinKang/react-fundamentals-curriculum.git"
+    "url": "git+https://github.com/AlvinKang/WeatherWatcher"
   },
   "author": "Alvin Kang",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AlvinKang/react-fundamentals-curriculum/issues"
+    "url": "https://github.com/AlvinKang/WeatherWatcher/issues"
   },
-  "homepage": "https://github.com/AlvinKang/react-fundamentals-curriculum#readme",
+  "homepage": "https://github.com/AlvinKang/WeatherWatcher#readme",
   "dependencies": {
     "axios": "^0.18.0",
     "moment": "^2.22.2",
@@ -39,6 +42,7 @@
     "babel-preset-react": "^6.24.1",
     "css-loader": "^0.28.11",
     "file-loader": "^1.1.11",
+    "firebase-tools": "^3.18.6",
     "html-webpack-plugin": "^3.2.0",
     "react-svg-loader": "^2.1.0",
     "style-loader": "^0.21.0",
