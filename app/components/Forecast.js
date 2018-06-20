@@ -242,7 +242,12 @@ class Forecast extends React.Component {
           <h1>{errMsg}</h1>
         ) : (
           <div>
-            <h1>Forecast for {location}</h1>
+            <h1>
+              Forecast for{" "}
+              <span style={{ fontWeight: "700", color: "#330033" }}>
+                {location}
+              </span>
+            </h1>
             <div className="row">
               {forecast.map(day => {
                 return (
