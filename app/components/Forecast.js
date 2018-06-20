@@ -1,5 +1,5 @@
-const React = require("react");
-const api = require("../utils/api");
+import React from "react";
+import { getForecast } from "../utils/api";
 import queryString from "query-string";
 import DayCard from "./DayCard";
 
@@ -159,8 +159,7 @@ class Forecast extends React.Component {
     const location = queryString.parse(search).location;
 
     // Call api
-    api
-      .getForecast(location)
+    getForecast(location)
       .then(res => res.data)
       .then(res => {
         // If api call is successful
@@ -254,4 +253,4 @@ class Forecast extends React.Component {
   }
 }
 
-module.exports = Forecast;
+export default Forecast;
