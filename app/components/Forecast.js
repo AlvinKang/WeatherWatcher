@@ -226,16 +226,19 @@ class Forecast extends React.Component {
   // Update the state with 5 Forecast detail cards
 
   render() {
+    const { loading, location, forecast } = this.state;
+    const { isError, errMsg } = this.state.error;
+
     return (
       <div className="forecast-container">
-        {this.state.loading ? (
+        {loading ? (
           <h1>Loading</h1>
-        ) : this.state.error.isError ? (
-          <h1>{this.state.error.errMsg}</h1>
+        ) : isError ? (
+          <h1>{errMsg}</h1>
         ) : (
           <div style={{ textAlign: "center" }}>
-            <h1>{this.state.location}</h1>
-            {this.state.forecast.map(day => {
+            <h1>{location}</h1>
+            {forecast.map(day => {
               return (
                 <DayCard
                   img={require(`../images/weather-icons/${day.icon}.svg`)}
