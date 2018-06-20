@@ -3,6 +3,7 @@ import { getForecast } from "../utils/api";
 import queryString from "query-string";
 import DayCard from "./DayCard";
 import Loader from "./Loader";
+import { Link } from "react-router-dom";
 
 // @returns object {day : [hour forecast1, hour forecast2, ...]}
 function organizeByDay(list) {
@@ -245,13 +246,31 @@ class Forecast extends React.Component {
             <div className="row">
               {forecast.map(day => {
                 return (
-                  <DayCard
-                    img={require(`../images/weather-icons/${day.icon}.svg`)}
-                    date={day.dt_text}
+                  <Link
+                    className="link"
+                    to={{
+                      pathname: `/details/${location}`,
+                      state: {
+                        lo: day.temps[0],
+                        hi: day.temps[1],
+                        icon: require(`../images/weather-icons/${
+                          day.icon
+                        }.svg`),
+                        humidity: day.humidity,
+                        description: day.description,
+                        date: day.dt_text
+                      }
+                    }}
                     key={day.dt}
-                    lo={day.temps[0]}
-                    hi={day.temps[1]}
-                  />
+                  >
+                    <DayCard
+                      img={require(`../images/weather-icons/${day.icon}.svg`)}
+                      date={day.dt_text}
+                      key={day.dt}
+                      lo={day.temps[0]}
+                      hi={day.temps[1]}
+                    />
+                  </Link>
                 );
               })}
             </div>

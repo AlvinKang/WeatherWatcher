@@ -2,6 +2,7 @@ const React = require("react");
 const Home = require("./Home");
 const Nav = require("./Nav");
 import Forecast from "./Forecast";
+import Details from "./Details";
 import { BrowserRouter as Router, Link, Switch, Route } from "react-router-dom";
 
 class App extends React.Component {
@@ -13,6 +14,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Home} />
             <Route path="/forecast" component={Forecast} />
+            <Route path="/details" component={Details} />
             <Route render={() => <p>Not found</p>} />
           </Switch>
         </div>
