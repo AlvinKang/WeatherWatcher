@@ -44,7 +44,11 @@ class Home extends React.Component {
             value={this.state.searchValue}
           />
 
-          <button className="button" type="submit">
+          <button
+            className="button"
+            type="submit"
+            disabled={!this.state.searchValue}
+          >
             Get Weather
           </button>
         </form>

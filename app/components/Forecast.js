@@ -173,12 +173,6 @@ class Forecast extends React.Component {
       })
       .catch(error => {
         // Handle error
-        this.setState({
-          error: {
-            isError: true
-          },
-          loading: false
-        });
         if (error.response) {
           // The request was made and the server responded with a status code
           // that falls out of the range of 2xx
@@ -187,8 +181,10 @@ class Forecast extends React.Component {
           console.log(error.response.headers);
           this.setState({
             error: {
-              errMsg: "Error: " + error.response.data.message
-            }
+              errMsg: "Error: " + error.response.data.message,
+              isError: true
+            },
+            loading: false
           });
         } else if (error.request) {
           // The request was made but no response was received
@@ -197,16 +193,20 @@ class Forecast extends React.Component {
           console.log(error.request);
           this.setState({
             error: {
-              errMsg: "Error: No response received."
-            }
+              errMsg: "Error: No response received.",
+              isError: true
+            },
+            loading: false
           });
         } else {
           // Something happened in setting up the request that triggered an Error
           console.log("Error", error.message);
           this.setState({
             error: {
-              errMsg: "There was an error. Please try again."
-            }
+              errMsg: "There was an error. Please try again.",
+              isError: true
+            },
+            loading: false
           });
         }
       });

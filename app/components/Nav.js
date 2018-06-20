@@ -1,6 +1,5 @@
 const React = require("react");
-const api = require("../utils/api");
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const NavHeader = () => {
   return (
@@ -17,32 +16,32 @@ class Nav extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      searchValue: ""
+      searchValue: "",
+      fireRedirect: false
     };
 
-    this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleSubmit(event) {
+    event.preventDefault();
+    this.setState({
+      fireRedirect: true
+    });
   }
 
   handleChange(event) {
     const searchValue = event.target.value;
     this.setState({
-      searchValue: searchValue
-    });
-  }
-
-  handleSubmit(event) {
-    event.preventDefault();
-    // TODO: Call API, route to next page
-    const results = {};
-    api.getCurrentWeather(this.state.searchValue).then(data => {
-      results.weather = data.weather;
-      results.location = data.name;
-      console.log(results);
+      searchValue: searchValue,
+      fireRedirect: false
     });
   }
 
   render() {
+    const { fireRedirect } = this.state;
+
     return (
       <div className="nav">
         <NavHeader />
@@ -61,6 +60,16 @@ class Nav extends React.Component {
             Get Weather
           </button>
         </form>
+        {fireRedirect && (
+          <Redirect
+            push
+            to={{
+              pathname: "/forecast",
+              search: `?location=${this.state.searchValue}`
+            }}
+            from="/"
+          />
+        )}
       </div>
     );
   }
