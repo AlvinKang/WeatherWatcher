@@ -34,12 +34,12 @@ class Home extends React.Component {
       <div className="home-container">
         <form className="column" onSubmit={this.handleSubmit}>
           <label className="header" htmlFor="search-box">
-            Enter a City and State
+            Enter a Location.
           </label>
           <input
             id="search-box"
             type="text"
-            placeholder="Las Vegas, Nevada"
+            placeholder="Las Vegas"
             onChange={this.handleChange}
             value={this.state.searchValue}
           />

@@ -2,6 +2,7 @@ import React from "react";
 import { getForecast } from "../utils/api";
 import queryString from "query-string";
 import DayCard from "./DayCard";
+import Loader from "./Loader";
 
 // @returns object {day : [hour forecast1, hour forecast2, ...]}
 function organizeByDay(list) {
@@ -230,25 +231,30 @@ class Forecast extends React.Component {
     const { isError, errMsg } = this.state.error;
 
     return (
-      <div className="forecast-container">
+      <div
+        className="forecast-container"
+        style={loading || isError ? { justifyContent: "center" } : null}
+      >
         {loading ? (
-          <h1>Loading</h1>
+          <Loader />
         ) : isError ? (
           <h1>{errMsg}</h1>
         ) : (
-          <div style={{ textAlign: "center" }}>
-            <h1>{location}</h1>
-            {forecast.map(day => {
-              return (
-                <DayCard
-                  img={require(`../images/weather-icons/${day.icon}.svg`)}
-                  date={day.dt_text}
-                  key={day.dt}
-                  lo={day.temps[0]}
-                  hi={day.temps[1]}
-                />
-              );
-            })}
+          <div>
+            <h1>Forecast for {location}</h1>
+            <div className="row">
+              {forecast.map(day => {
+                return (
+                  <DayCard
+                    img={require(`../images/weather-icons/${day.icon}.svg`)}
+                    date={day.dt_text}
+                    key={day.dt}
+                    lo={day.temps[0]}
+                    hi={day.temps[1]}
+                  />
+                );
+              })}
+            </div>
           </div>
         )}
       </div>
