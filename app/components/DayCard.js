@@ -9,7 +9,7 @@ const DayCard = props => {
       <p>
         <Moment format="dddd, MMM DD">{props.date}</Moment>
         <br />
-        {props.lo} / {props.hi}
+        {props.hi}&deg; / {props.lo}&deg;
       </p>
     </div>
   );
