@@ -125,7 +125,7 @@ div {
   transform: translateY(1px);
 }
 
-.nav-search input {
+/* .nav-search input {
   border-radius: 3px;
   margin: 10px 10px;
   padding: 10px;
@@ -137,13 +137,13 @@ div {
   margin-right: 30px;
   font-size: 1.2em;
   width: 150px;
-}
+} */
 
-@media (max-width: 880px) {
+/* @media (max-width: 880px) {
   .nav {
     font-size: 0.8rem;
   }
-}
+} */
 
 @media (max-width: 768px) {
   .nav-search {
@@ -162,5 +162,8 @@ div {
 @media (max-width: 500px) {
   .home-container label {
     font-size: 2.5em;
+  }
+  .nav {
+    font-size: 0.8em;
   }
 }
