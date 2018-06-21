@@ -42,6 +42,7 @@ class Home extends React.Component {
             placeholder="Las Vegas"
             onChange={this.handleChange}
             value={this.state.searchValue}
+            autoComplete="off"
           />
 
           <button
