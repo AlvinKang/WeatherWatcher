@@ -166,9 +166,22 @@ class Forecast extends React.Component {
       .then(res => {
         // If api call is successful
         // Push forecast objects into state array
+
+        // Sort forecast by datetime
+        const forecast = combineInfoByDay(organizeByDay(res.list)).sort(
+          (a, b) => a.dt - b.dt
+        );
+
+        // If today's forecast discrepency is too small, throw it out
+        const ignoreTodaysForecast =
+          forecast[0].temps[1] - forecast[0].temps[0] < 6;
+        const modifiedForecast = ignoreTodaysForecast
+          ? forecast.slice(1)
+          : forecast.slice(0);
+
         this.setState({
           location: res.city.name,
-          forecast: combineInfoByDay(organizeByDay(res.list)),
+          forecast: modifiedForecast,
           loading: false
         });
       })
@@ -231,9 +244,6 @@ class Forecast extends React.Component {
     const { loading, location, forecast } = this.state;
     const { isError, errMsg } = this.state.error;
 
-    // Sorted forecast by datetime
-    const sortedForecast = forecast.slice().sort((a, b) => a.dt - b.dt);
-
     return (
       <div
         className="forecast-container"
@@ -252,7 +262,7 @@ class Forecast extends React.Component {
               </span>
             </h1>
             <div className="row">
-              {sortedForecast.map(day => {
+              {forecast.map(day => {
                 return (
                   <Link
                     className="link"
