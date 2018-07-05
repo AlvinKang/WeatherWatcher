@@ -231,6 +231,9 @@ class Forecast extends React.Component {
     const { loading, location, forecast } = this.state;
     const { isError, errMsg } = this.state.error;
 
+    // Sorted forecast by datetime
+    const sortedForecast = forecast.slice().sort((a, b) => a.dt - b.dt);
+
     return (
       <div
         className="forecast-container"
@@ -249,7 +252,7 @@ class Forecast extends React.Component {
               </span>
             </h1>
             <div className="row">
-              {forecast.map(day => {
+              {sortedForecast.map(day => {
                 return (
                   <Link
                     className="link"
