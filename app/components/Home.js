@@ -43,6 +43,7 @@ class Home extends React.Component {
             onChange={this.handleChange}
             value={this.state.searchValue}
             autoComplete="off"
+            autoFocus
           />
 
           <button
