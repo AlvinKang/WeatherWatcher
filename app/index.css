@@ -250,10 +250,12 @@ div {
   right: 0;
 }
 
-/* @media (max-width: 1169px) {
+@media (max-width: 1169px) {
   .row {
+    flex-flow: column nowrap;
+    padding-bottom: 10%;
   }
-} */
+}
 
 @media (max-width: 768px) {
   .nav-search {
@@ -267,6 +269,10 @@ div {
   .app-header {
     padding-left: 0;
   }
+
+  .forecast-container h1 {
+    font-size: 3em;
+  }
 }
 
 @media (max-width: 500px) {
@@ -275,5 +281,18 @@ div {
   }
   .nav {
     font-size: 0.8em;
+  }
+
+  .forecast-container h1 {
+    font-size: 2.5em;
+  }
+}
+
+@media (max-width: 400px) {
+  .home-container label {
+    font-size: 2em;
+  }
+  .nav {
+    font-size: 0.6em;
   }
 }
