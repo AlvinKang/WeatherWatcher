@@ -4,7 +4,7 @@ import PropTypes from "prop-types";
 
 const DayCard = props => {
   return (
-    <div className="card">
+    <div className="card hvr-underline-from-center">
       <img src={props.img} alt="weather img" />
       <p>
         <Moment format="dddd, MMM DD">{props.date}</Moment>
