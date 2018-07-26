@@ -5,12 +5,22 @@ import PropTypes from "prop-types";
 const DayCard = props => {
   return (
     <div className="card hvr-underline-from-center">
-      <img src={props.img} alt="weather img" />
-      <p>
-        <Moment format="dddd, MMM DD">{props.date}</Moment>
+      <div className="card-label">
+        <span className="card-label-weekday">
+          <Moment format="dddd">{props.date}</Moment>
+        </span>
         <br />
-        {props.hi}&deg; / {props.lo}&deg;
-      </p>
+        <Moment format="MMM DD">{props.date}</Moment>
+      </div>
+      <div className="card-body">
+        <img src={props.img} alt="weather img" />
+        <p>
+          <span className="hi-temp">{props.hi}&deg;</span> {"  "}
+          {props.lo}&deg;
+          <br />
+          {props.description}
+        </p>
+      </div>
     </div>
   );
 };

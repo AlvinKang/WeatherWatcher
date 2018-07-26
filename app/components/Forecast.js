@@ -116,10 +116,11 @@ class Forecast extends React.Component {
               {forecast.map(day => {
                 return (
                   <Link
-                    className="link"
+                    className="link card-link"
                     to={{
                       pathname: `/details/${location}`,
                       state: {
+                        from: this.props.location,
                         lo: day.temps[0],
                         hi: day.temps[1],
                         icon: require(`../images/weather-icons/${
@@ -138,6 +139,7 @@ class Forecast extends React.Component {
                       key={day.dt}
                       lo={day.temps[0]}
                       hi={day.temps[1]}
+                      description={day.description}
                     />
                   </Link>
                 );

@@ -75,7 +75,7 @@ div {
   flex-flow: row wrap;
   text-align: center;
   justify-content: space-around;
-  margin-top: 10%;
+  margin-top: 5%;
 }
 
 .card {
@@ -84,8 +84,27 @@ div {
   flex-direction: column;
   min-width: 230px;
   min-height: 230px;
-  /* border: 1px solid #83a5b3; */
+  border: 1px solid #adadb2;
+  border-right: none;
   margin-top: 5%;
+  background: rgba(255, 255, 255, 0.399);
+  z-index: 1;
+  color: black;
+}
+
+.card-label {
+  border-bottom: 1px solid #adadb2;
+  font-size: 1.3em;
+  padding: 10px;
+}
+
+.card-label-weekday {
+  font-weight: 700;
+  font-size: 1.5em;
+}
+
+.card-link:last-child .card {
+  border-right: 1px solid #adadb2;
 }
 
 .card img {
@@ -97,7 +116,10 @@ div {
 .card p {
   font-weight: 400;
   font-size: 1.3em;
-  color: black;
+}
+
+.card .hi-temp {
+  font-size: 1.5em;
 }
 
 .column label {
@@ -212,7 +234,7 @@ div {
   left: 51%;
   right: 51%;
   bottom: 0;
-  background: #2098d1;
+  background: #9466f2;
   height: 4px;
   -webkit-transition-property: left, right;
   transition-property: left, right;
@@ -227,6 +249,11 @@ div {
   left: 0;
   right: 0;
 }
+
+/* @media (max-width: 1169px) {
+  .row {
+  }
+} */
 
 @media (max-width: 768px) {
   .nav-search {
