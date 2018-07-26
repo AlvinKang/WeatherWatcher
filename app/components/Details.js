@@ -1,5 +1,5 @@
 import React from "react";
-import { Redirect } from "react-router-dom";
+import { Redirect, Link } from "react-router-dom";
 import Moment from "react-moment";
 
 export default props => {
@@ -8,32 +8,41 @@ export default props => {
     return <Redirect to="/" />;
   }
 
-  const { lo, hi, icon, humidity, description, date } = props.location.state;
+  const {
+    from,
+    lo,
+    hi,
+    icon,
+    humidity,
+    description,
+    date
+  } = props.location.state;
 
   const { location } = props.match.params;
 
   return (
     <div className="details-container">
-      <h1>
-        <Moment format="dddd, MMM DD">{date}</Moment>
-      </h1>
+      <div className="details-label">
+        <span className="details-label-weekday">
+          <Moment format="dddd, MMMM DD">{date}</Moment>
+        </span>
+      </div>
       <h2>@ {location}</h2>
 
       <img src={icon} alt="weather img" />
 
-      <p
-        style={{
-          fontSize: "2.3rem",
-          marginBottom: "10px"
-        }}
-      >
-        H {hi}&deg; L {lo}&deg;{" "}
+      <p className="temperature">
+        H {hi}&deg; L {lo}&deg;
       </p>
       <p>
         {description.toUpperCase()}
         <br />
         Humidity: {humidity}%
       </p>
+
+      <Link to={from} className="link">
+        <button className="button"> Back to Forecast </button>
+      </Link>
     </div>
   );
 };

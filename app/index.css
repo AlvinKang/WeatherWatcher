@@ -166,32 +166,23 @@ div {
   transform: translateY(1px);
 }
 
-/* .nav-search input {
-  border-radius: 3px;
-  margin: 10px 10px;
-  padding: 10px;
-  border: 1px solid rgba(0, 0, 0, 0.43);
-  font-size: 1em;
-}
-
-.nav-search .button {
-  margin-right: 30px;
-  font-size: 1.2em;
-  width: 150px;
-} */
-
-/* @media (max-width: 880px) {
-  .nav {
-    font-size: 0.8rem;
-  }
-} */
-
 .details-container {
   display: flex;
   align-items: center;
   flex-direction: column;
   grid-column: 1 / -1;
   grid-row: 2 / -1;
+  text-align: center;
+}
+
+.details-label {
+  font-size: 2em;
+  padding: 10px;
+}
+
+.details-label-weekday {
+  font-weight: 700;
+  font-size: 2em;
 }
 
 .details-container img {
@@ -200,21 +191,23 @@ div {
   margin-bottom: 10px;
 }
 
-.details-container h1 {
-  font-weight: 300;
-  font-size: 3em;
-  margin-bottom: 10px;
-}
-
 .details-container h2 {
-  font-weight: 300;
+  font-weight: 400;
   font-size: 2em;
+  margin: 0;
+  margin-bottom: 20px;
 }
 
 .details-container p {
   font-weight: 300;
-  font-size: 1.5rem;
-  text-align: center;
+  font-size: 2em;
+  margin-bottom: 10px;
+}
+
+.details-container .temperature {
+  font-weight: 400;
+  font-size: 2.5em;
+  margin-bottom: 10px;
 }
 
 /* Underline From Center */
@@ -255,6 +248,10 @@ div {
     flex-flow: column nowrap;
     padding-bottom: 10%;
   }
+
+  .card {
+    border-right: 1px solid #adadb2;
+  }
 }
 
 @media (max-width: 768px) {
@@ -275,6 +272,16 @@ div {
   }
 }
 
+@media (max-width: 700px) {
+  .details-container {
+    font-size: 0.8em;
+  }
+
+  .details-container img {
+    height: 180px;
+  }
+}
+
 @media (max-width: 500px) {
   .home-container label {
     font-size: 2.5em;
@@ -285,6 +292,14 @@ div {
 
   .forecast-container h1 {
     font-size: 2.5em;
+  }
+
+  .details-container {
+    font-size: 0.6em;
+  }
+
+  .details-container img {
+    height: 150px;
   }
 }
 
