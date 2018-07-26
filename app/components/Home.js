@@ -1,6 +1,14 @@
 const React = require("react");
 import { Redirect } from "react-router-dom";
+import bg from "../images/bg/home-bg.jpg";
 
+// Inline styling for background
+const backgroundStyle = {
+  backgroundImage: `url(${bg})`,
+  backgroundSize: "cover",
+  backgroundRepeat: "no-repeat",
+  backgroundPosition: "center center"
+};
 class Home extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +39,7 @@ class Home extends React.Component {
     const { fireRedirect } = this.state;
 
     return (
-      <div className="home-container">
+      <div className="home-container" style={backgroundStyle}>
         <form className="column" onSubmit={this.handleSubmit}>
           <label className="header" htmlFor="search-box">
             Enter a Location.
@@ -39,7 +47,7 @@ class Home extends React.Component {
           <input
             id="search-box"
             type="text"
-            placeholder="Las Vegas"
+            placeholder="Malibu"
             onChange={this.handleChange}
             value={this.state.searchValue}
             autoComplete="off"
