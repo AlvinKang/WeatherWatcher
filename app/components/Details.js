@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 import Moment from "react-moment";
 
 export default props => {
-  // If not coming from forecast page, redirec to home
+  // If not coming from forecast page, redirect to home
   if (!props.location.state) {
     return <Redirect to="/" />;
   }
